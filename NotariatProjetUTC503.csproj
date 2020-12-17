@@ -242,6 +242,9 @@
     <Compile Include="Models\origine.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ower\clientData.cs" />
+    <Compile Include="Models\ower\dossierData.cs" />
+    <Compile Include="Models\ower\notaireData.cs" />
     <Compile Include="Models\secretaire.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
