@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NotariatProjetUTC503Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="adFiscale">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ville" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="client" Relationship="Self.FK_client_adFiscale" FromRole="adFiscale" ToRole="client" />
+  </EntityType>
+  <EntityType Name="bien">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cp" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ville" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idNature" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="nature" Relationship="Self.FK_bien_ToTable" FromRole="bien" ToRole="nature" />
+    <NavigationProperty Name="origine" Relationship="Self.FK_origine_ToTable" FromRole="bien" ToRole="origine" />
+    <NavigationProperty Name="client" Relationship="Self.client_bien" FromRole="bien" ToRole="client" />
+  </EntityType>
+  <EntityType Name="claire">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prenom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="dossier" Relationship="Self.FK_dossier_ToTable_1" FromRole="claire" ToRole="dossier" />
+  </EntityType>
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nomEtatCivil" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prenom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prenoms" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="rue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cp" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ville" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateNaiss" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="lieuxNaiss" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nationalite" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="profession" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="telPortable" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="telFixe" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="idAdFiscale" Type="Int32" Nullable="false" />
+    <Property Name="dateDC" Type="DateTime" Precision="0" />
+    <Property Name="lieuxDC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="adFiscale" Relationship="Self.FK_client_adFiscale" FromRole="client" ToRole="adFiscale" />
+    <NavigationProperty Name="client_dossier" Relationship="Self.FK_client_dossier_ToTable" FromRole="client" ToRole="client_dossier" />
+    <NavigationProperty Name="bien" Relationship="Self.client_bien" FromRole="client" ToRole="bien" />
+  </EntityType>
+  <EntityType Name="client_dossier">
+    <Key>
+      <PropertyRef Name="idClient" />
+      <PropertyRef Name="idDossier" />
+    </Key>
+    <Property Name="idClient" Type="Int32" Nullable="false" />
+    <Property Name="idDossier" Type="Int32" Nullable="false" />
+    <Property Name="idTypeClient" Type="Int32" />
+    <NavigationProperty Name="client" Relationship="Self.FK_client_dossier_ToTable" FromRole="client_dossier" ToRole="client" />
+    <NavigationProperty Name="dossier" Relationship="Self.FK_client_dossier_ToTable_1" FromRole="client_dossier" ToRole="dossier" />
+    <NavigationProperty Name="typeClient" Relationship="Self.FK_client_dossier_typeClient" FromRole="client_dossier" ToRole="typeClient" />
+  </EntityType>
+  <EntityType Name="document">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idDossier" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="dossier" Relationship="Self.FK_document_ToTable" FromRole="document" ToRole="dossier" />
+  </EntityType>
+  <EntityType Name="dossier">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dateCreation" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="dateButoireSigna" Type="DateTime" Precision="0" />
+    <Property Name="dateSigna" Type="DateTime" Precision="0" />
+    <Property Name="dateTransImpot" Type="DateTime" Precision="0" />
+    <Property Name="dateRetourImpot" Type="DateTime" Precision="0" />
+    <Property Name="idNotaire" Type="Int32" Nullable="false" />
+    <Property Name="idClaire" Type="Int32" Nullable="false" />
+    <Property Name="idSecretaire" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="claire" Relationship="Self.FK_dossier_ToTable_1" FromRole="dossier" ToRole="claire" />
+    <NavigationProperty Name="client_dossier" Relationship="Self.FK_client_dossier_ToTable_1" FromRole="dossier" ToRole="client_dossier" />
+    <NavigationProperty Name="document" Relationship="Self.FK_document_ToTable" FromRole="dossier" ToRole="document" />
+    <NavigationProperty Name="notaire" Relationship="Self.FK_dossier_ToTable" FromRole="dossier" ToRole="notaire" />
+    <NavigationProperty Name="secretaire" Relationship="Self.FK_dossier_ToTable_2" FromRole="dossier" ToRole="secretaire" />
+    <NavigationProperty Name="typeActe" Relationship="Self.dossier_typeActe" FromRole="dossier" ToRole="typeActe" />
+    <NavigationProperty Name="mail" Relationship="Self.mail_dossier" FromRole="dossier" ToRole="mail" />
+    <NavigationProperty Name="mvtfont" Relationship="Self.mvtFont_dossier" FromRole="dossier" ToRole="mvtfont" />
+  </EntityType>
+  <EntityType Name="mail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="dossier" Relationship="Self.mail_dossier" FromRole="mail" ToRole="dossier" />
+  </EntityType>
+  <EntityType Name="mvtfont">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="montant" Type="Int32" Nullable="false" />
+    <Property Name="libelle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="dossier" Relationship="Self.mvtFont_dossier" FromRole="mvtfont" ToRole="dossier" />
+  </EntityType>
+  <EntityType Name="nature">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="libelle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="bien" Relationship="Self.FK_bien_ToTable" FromRole="nature" ToRole="bien" />
+  </EntityType>
+  <EntityType Name="notaire">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prenom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="dossier" Relationship="Self.FK_dossier_ToTable" FromRole="notaire" ToRole="dossier" />
+  </EntityType>
+  <EntityType Name="origine">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idBien" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="bien" Relationship="Self.FK_origine_ToTable" FromRole="origine" ToRole="bien" />
+  </EntityType>
+  <EntityType Name="secretaire">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prenom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="dossier" Relationship="Self.FK_dossier_ToTable_2" FromRole="secretaire" ToRole="dossier" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="typeActe">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descr" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="dossier" Relationship="Self.dossier_typeActe" FromRole="typeActe" ToRole="dossier" />
+  </EntityType>
+  <EntityType Name="typeClient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="client_dossier" Relationship="Self.FK_client_dossier_typeClient" FromRole="typeClient" ToRole="client_dossier" />
+  </EntityType>
+  <Association Name="FK_client_adFiscale">
+    <End Role="adFiscale" Type="Self.adFiscale" Multiplicity="1" />
+    <End Role="client" Type="Self.client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="adFiscale">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="client">
+        <PropertyRef Name="idAdFiscale" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bien_ToTable">
+    <End Role="nature" Type="Self.nature" Multiplicity="1" />
+    <End Role="bien" Type="Self.bien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nature">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bien">
+        <PropertyRef Name="idNature" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_origine_ToTable">
+    <End Role="bien" Type="Self.bien" Multiplicity="1" />
+    <End Role="origine" Type="Self.origine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bien">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="origine">
+        <PropertyRef Name="idBien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dossier_ToTable_1">
+    <End Role="claire" Type="Self.claire" Multiplicity="1" />
+    <End Role="dossier" Type="Self.dossier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="claire">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dossier">
+        <PropertyRef Name="idClaire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_client_dossier_ToTable">
+    <End Role="client" Type="Self.client" Multiplicity="1" />
+    <End Role="client_dossier" Type="Self.client_dossier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="client_dossier">
+        <PropertyRef Name="idClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_client_dossier_ToTable_1">
+    <End Role="dossier" Type="Self.dossier" Multiplicity="1" />
+    <End Role="client_dossier" Type="Self.client_dossier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dossier">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="client_dossier">
+        <PropertyRef Name="idDossier" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_client_dossier_typeClient">
+    <End Role="typeClient" Type="Self.typeClient" Multiplicity="0..1" />
+    <End Role="client_dossier" Type="Self.client_dossier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="typeClient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="client_dossier">
+        <PropertyRef Name="idTypeClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_document_ToTable">
+    <End Role="dossier" Type="Self.dossier" Multiplicity="1" />
+    <End Role="document" Type="Self.document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dossier">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="document">
+        <PropertyRef Name="idDossier" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dossier_ToTable">
+    <End Role="notaire" Type="Self.notaire" Multiplicity="1" />
+    <End Role="dossier" Type="Self.dossier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="notaire">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dossier">
+        <PropertyRef Name="idNotaire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dossier_ToTable_2">
+    <End Role="secretaire" Type="Self.secretaire" Multiplicity="1" />
+    <End Role="dossier" Type="Self.dossier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="secretaire">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dossier">
+        <PropertyRef Name="idSecretaire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="client_bien">
+    <End Role="client" Type="Self.client" Multiplicity="*" />
+    <End Role="bien" Type="Self.bien" Multiplicity="*" />
+  </Association>
+  <Association Name="dossier_typeActe">
+    <End Role="dossier" Type="Self.dossier" Multiplicity="*" />
+    <End Role="typeActe" Type="Self.typeActe" Multiplicity="*" />
+  </Association>
+  <Association Name="mail_dossier">
+    <End Role="mail" Type="Self.mail" Multiplicity="*" />
+    <End Role="dossier" Type="Self.dossier" Multiplicity="*" />
+  </Association>
+  <Association Name="mvtFont_dossier">
+    <End Role="mvtfont" Type="Self.mvtfont" Multiplicity="*" />
+    <End Role="dossier" Type="Self.dossier" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="NotariatProjetUTC503Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="adFiscale" EntityType="Self.adFiscale" />
+    <EntitySet Name="bien" EntityType="Self.bien" />
+    <EntitySet Name="claire" EntityType="Self.claire" />
+    <EntitySet Name="client" EntityType="Self.client" />
+    <EntitySet Name="client_dossier" EntityType="Self.client_dossier" />
+    <EntitySet Name="document" EntityType="Self.document" />
+    <EntitySet Name="dossier" EntityType="Self.dossier" />
+    <EntitySet Name="mail" EntityType="Self.mail" />
+    <EntitySet Name="mvtfont" EntityType="Self.mvtfont" />
+    <EntitySet Name="nature" EntityType="Self.nature" />
+    <EntitySet Name="notaire" EntityType="Self.notaire" />
+    <EntitySet Name="origine" EntityType="Self.origine" />
+    <EntitySet Name="secretaire" EntityType="Self.secretaire" />
+    <EntitySet Name="Table" EntityType="Self.Table" />
+    <EntitySet Name="typeActe" EntityType="Self.typeActe" />
+    <EntitySet Name="typeClient" EntityType="Self.typeClient" />
+    <AssociationSet Name="FK_client_adFiscale" Association="Self.FK_client_adFiscale">
+      <End Role="adFiscale" EntitySet="adFiscale" />
+      <End Role="client" EntitySet="client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bien_ToTable" Association="Self.FK_bien_ToTable">
+      <End Role="nature" EntitySet="nature" />
+      <End Role="bien" EntitySet="bien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_origine_ToTable" Association="Self.FK_origine_ToTable">
+      <End Role="bien" EntitySet="bien" />
+      <End Role="origine" EntitySet="origine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dossier_ToTable_1" Association="Self.FK_dossier_ToTable_1">
+      <End Role="claire" EntitySet="claire" />
+      <End Role="dossier" EntitySet="dossier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_client_dossier_ToTable" Association="Self.FK_client_dossier_ToTable">
+      <End Role="client" EntitySet="client" />
+      <End Role="client_dossier" EntitySet="client_dossier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_client_dossier_ToTable_1" Association="Self.FK_client_dossier_ToTable_1">
+      <End Role="dossier" EntitySet="dossier" />
+      <End Role="client_dossier" EntitySet="client_dossier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_client_dossier_typeClient" Association="Self.FK_client_dossier_typeClient">
+      <End Role="typeClient" EntitySet="typeClient" />
+      <End Role="client_dossier" EntitySet="client_dossier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_document_ToTable" Association="Self.FK_document_ToTable">
+      <End Role="dossier" EntitySet="dossier" />
+      <End Role="document" EntitySet="document" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dossier_ToTable" Association="Self.FK_dossier_ToTable">
+      <End Role="notaire" EntitySet="notaire" />
+      <End Role="dossier" EntitySet="dossier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dossier_ToTable_2" Association="Self.FK_dossier_ToTable_2">
+      <End Role="secretaire" EntitySet="secretaire" />
+      <End Role="dossier" EntitySet="dossier" />
+    </AssociationSet>
+    <AssociationSet Name="client_bien" Association="Self.client_bien">
+      <End Role="client" EntitySet="client" />
+      <End Role="bien" EntitySet="bien" />
+    </AssociationSet>
+    <AssociationSet Name="dossier_typeActe" Association="Self.dossier_typeActe">
+      <End Role="dossier" EntitySet="dossier" />
+      <End Role="typeActe" EntitySet="typeActe" />
+    </AssociationSet>
+    <AssociationSet Name="mail_dossier" Association="Self.mail_dossier">
+      <End Role="mail" EntitySet="mail" />
+      <End Role="dossier" EntitySet="dossier" />
+    </AssociationSet>
+    <AssociationSet Name="mvtFont_dossier" Association="Self.mvtFont_dossier">
+      <End Role="mvtfont" EntitySet="mvtfont" />
+      <End Role="dossier" EntitySet="dossier" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

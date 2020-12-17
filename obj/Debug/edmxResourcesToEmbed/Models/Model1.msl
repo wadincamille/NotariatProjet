@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NotariatProjetUTC503ModelStoreContainer" CdmEntityContainer="NotariatProjetUTC503Entities">
+    <EntitySetMapping Name="adFiscale">
+      <EntityTypeMapping TypeName="NotariatProjetUTC503Model.adFiscale">
+        <MappingFragment StoreEntitySet="adFiscale">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="rue" ColumnName="rue" />
+          <ScalarProperty Name="cp" ColumnName="cp" />
+          <ScalarProperty Name="ville" ColumnName="ville" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bien">
+      <EntityTypeMapping TypeName="NotariatProjetUTC503Model.bien">
+        <MappingFragment StoreEntitySet="bien">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="rue" ColumnName="rue" />
+          <ScalarProperty Name="cp" ColumnName="cp" />
+          <ScalarProperty Name="ville" ColumnName="ville" />
+          <ScalarProperty Name="idNature" ColumnName="idNature" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="claire">
+      <EntityTypeMapping TypeName="NotariatProjetUTC503Model.claire">
+        <MappingFragment StoreEntitySet="claire">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="client">
+      <EntityTypeMapping TypeName="NotariatProjetUTC503Model.client">
+        <MappingFragment StoreEntitySet="client">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="nomEtatCivil" ColumnName="nomEtatCivil" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="prenoms" ColumnName="prenoms" />
+          <ScalarProperty Name="rue" ColumnName="rue" />
+          <ScalarProperty Name="cp" ColumnName="cp" />
+          <ScalarProperty Name="ville" ColumnName="ville" />
+          <ScalarProperty Name="dateNaiss" ColumnName="dateNaiss" />
+          <ScalarProperty Name="lieuxNaiss" ColumnName="lieuxNaiss" />
+          <ScalarProperty Name="nationalite" ColumnName="nationalite" />
+          <ScalarProperty Name="profession" ColumnName="profession" />
+          <ScalarProperty Name="telPortable" ColumnName="telPortable" />
+          <ScalarProperty Name="telFixe" ColumnName="telFixe" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="idAdFiscale" ColumnName="idAdFiscale" />
+          <ScalarProperty Name="dateDC" ColumnName="dateDC" />
+          <ScalarProperty Name="lieuxDC" ColumnName="lieuxDC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="client_dossier">
+      <EntityTypeMapping TypeName="NotariatProjetUTC503Model.client_dossier">
+        <MappingFragment StoreEntitySet="client_dossier">
+          <ScalarProperty Name="idClient" ColumnName="idClient" />
+          <ScalarProperty Name="idDossier" ColumnName="idDossier" />
+          <ScalarProperty Name="idTypeClient" ColumnName="idTypeClient" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="document">
+      <EntityTypeMapping TypeName="NotariatProjetUTC503Model.document">
+        <MappingFragment StoreEntitySet="document">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idDossier" ColumnName="idDossier" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dossier">
+      <EntityTypeMapping TypeName="NotariatProjetUTC503Model.dossier">
+        <MappingFragment StoreEntitySet="dossier">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+          <ScalarProperty Name="dateButoireSigna" ColumnName="dateButoireSigna" />
+          <ScalarProperty Name="dateSigna" ColumnName="dateSigna" />
+          <ScalarProperty Name="dateTransImpot" ColumnName="dateTransImpot" />
+          <ScalarProperty Name="dateRetourImpot" ColumnName="dateRetourImpot" />
+          <ScalarProperty Name="idNotaire" ColumnName="idNotaire" />
+          <ScalarProperty Name="idClaire" ColumnName="idClaire" />
+          <ScalarProperty Name="idSecretaire" ColumnName="idSecretaire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mail">
+      <EntityTypeMapping TypeName="NotariatProjetUTC503Model.mail">
+        <MappingFragment StoreEntitySet="mail">
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mvtfont">
+      <EntityTypeMapping TypeName="NotariatProjetUTC503Model.mvtfont">
+        <MappingFragment StoreEntitySet="mvtfont">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="montant" ColumnName="montant" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nature">
+      <EntityTypeMapping TypeName="NotariatProjetUTC503Model.nature">
+        <MappingFragment StoreEntitySet="nature">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notaire">
+      <EntityTypeMapping TypeName="NotariatProjetUTC503Model.notaire">
+        <MappingFragment StoreEntitySet="notaire">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="origine">
+      <EntityTypeMapping TypeName="NotariatProjetUTC503Model.origine">
+        <MappingFragment StoreEntitySet="origine">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descr" ColumnName="descr" />
+          <ScalarProperty Name="idBien" ColumnName="idBien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="secretaire">
+      <EntityTypeMapping TypeName="NotariatProjetUTC503Model.secretaire">
+        <MappingFragment StoreEntitySet="secretaire">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table">
+      <EntityTypeMapping TypeName="NotariatProjetUTC503Model.Table">
+        <MappingFragment StoreEntitySet="Table">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="typeActe">
+      <EntityTypeMapping TypeName="NotariatProjetUTC503Model.typeActe">
+        <MappingFragment StoreEntitySet="typeActe">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="descr" ColumnName="descr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="typeClient">
+      <EntityTypeMapping TypeName="NotariatProjetUTC503Model.typeClient">
+        <MappingFragment StoreEntitySet="typeClient">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="client_bien" TypeName="NotariatProjetUTC503Model.client_bien" StoreEntitySet="client_bien">
+      <EndProperty Name="client">
+        <ScalarProperty Name="id" ColumnName="idClient" />
+      </EndProperty>
+      <EndProperty Name="bien">
+        <ScalarProperty Name="id" ColumnName="idBien" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="dossier_typeActe" TypeName="NotariatProjetUTC503Model.dossier_typeActe" StoreEntitySet="dossier_typeActe">
+      <EndProperty Name="dossier">
+        <ScalarProperty Name="id" ColumnName="idDossier" />
+      </EndProperty>
+      <EndProperty Name="typeActe">
+        <ScalarProperty Name="id" ColumnName="idTypeActe" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="mail_dossier" TypeName="NotariatProjetUTC503Model.mail_dossier" StoreEntitySet="mail_dossier">
+      <EndProperty Name="mail">
+        <ScalarProperty Name="id" ColumnName="idMail" />
+      </EndProperty>
+      <EndProperty Name="dossier">
+        <ScalarProperty Name="id" ColumnName="idDossier" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="mvtFont_dossier" TypeName="NotariatProjetUTC503Model.mvtFont_dossier" StoreEntitySet="mvtFont_dossier">
+      <EndProperty Name="mvtfont">
+        <ScalarProperty Name="id" ColumnName="idMvtFont" />
+      </EndProperty>
+      <EndProperty Name="dossier">
+        <ScalarProperty Name="id" ColumnName="idDossier" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
