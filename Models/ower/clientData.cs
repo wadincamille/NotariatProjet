@@ -7,8 +7,8 @@ using System.ComponentModel.DataAnnotations;
 namespace ProjetNotariatUTC503.Models
 {
 
-    [MetadataType(typeof(clientsMetaData))]
-    public partial class clients
+    [MetadataType(typeof(clientMetaData))]
+    public partial class client
     {
         public int getid()
         {
@@ -17,13 +17,11 @@ namespace ProjetNotariatUTC503.Models
 
     }
 
-    public class clientsMetaData
+    public class clientMetaData
     {
 
         [Display(Name = "Nom de famille:")]
         public int nom { get; set; }
-
-      
 
         [Display(Name = "Nom etat civil:")]
         public int nomEtatCivil { get; set; }
@@ -52,9 +50,6 @@ namespace ProjetNotariatUTC503.Models
         [Display(Name = "Nationalité:")]
         public int nationalite { get; set; }
 
-
-
-
         [Display(Name = "Profession:")]
         public int profession { get; set; }
 
@@ -67,12 +62,8 @@ namespace ProjetNotariatUTC503.Models
         [Display(Name = "Adresse mail:")]
         public int mail { get; set; }
 
-
-
         [Display(Name = "Adresse fiscale:")]
         public int idAdFiscale { get; set; }
-
-
 
         [Display(Name = "Date de décès:")]
         public int dateDC { get; set; }

@@ -57,6 +57,7 @@ namespace NotariatProjetUTC503.Controllers
                 db.dossier.Add(dossier);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+                //return RedirectToAction("./biens");
             }
 
             ViewBag.idClaire = new SelectList(db.claire, "id", "nom", dossier.idClaire);
