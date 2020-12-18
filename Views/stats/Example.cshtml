@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Example";
+    //List<NotariatProjetUTC503.Models.dossier> listeDossier = ViewBag.dossier;
+    List<NotariatProjetUTC503.Models.claire> listeClaire = ViewBag.claire;
+}
+
+<h2>Example</h2>
+<table>
+    @foreach (var item in listeClaire)
+    {
+        <tr>
+            <td>@item.nom</td>
+            <td>@item.dossier.Count() </td>
+        </tr>
+    }
+</table>

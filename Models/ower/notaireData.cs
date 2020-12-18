@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace ProjetNotariatUTC503.Models
+namespace NotariatProjetUTC503.Models
 {
     public partial class notaire
     {
