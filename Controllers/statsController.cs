@@ -62,7 +62,7 @@ namespace NotariatProjetUTC503.Controllers
             {
                 db.client.Add(client);
                 db.SaveChanges();
-                return RedirectToAction("Index", );
+                return RedirectToAction("Index","Dossier");
             }
 
             ViewBag.idAdFiscale = new SelectList(db.adFiscale, "Id", "rue", client.idAdFiscale);
